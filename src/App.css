@@ -45,6 +45,7 @@ h1, h2, h3 {
 /* ---------- Halaman input & hasil: card di tengah layar ---------- */
 .page {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,6 +146,7 @@ h1, h2, h3 {
 /* ---------- Halaman awal ---------- */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding: 24px 8vw;
@@ -153,25 +155,61 @@ h1, h2, h3 {
   background-position: center;
   background-repeat: no-repeat;
 }
-.hero-content { max-width: min(720px, 52vw); text-align: left; }
+.hero-content { max-width: min(640px, 46vw); text-align: left; }
 .hero h1 { margin: 0 0 12px; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; }
 .hero-subtitle { margin: 0 0 24px; font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 500; color: var(--primary); }
 .hero-text { margin: 0 0 36px; font-size: clamp(1rem, 1.4vw, 1.25rem); line-height: 1.7; color: var(--muted); }
 .hero-btn { padding: 16px 40px; font-size: 1.15rem; }
 
 /* ---------- Responsif ---------- */
-@media (max-width: 768px) {
+html { -webkit-text-size-adjust: 100%; }
+
+/* HP, tablet, dan layar berorientasi portrait:
+   teks di atas, ilustrasi utuh di bawah (tidak terpotong) */
+@media (max-width: 768px), (orientation: portrait) {
   .hero {
     align-items: flex-start;
-    padding-top: 12vh;
-    background-size: contain;
+    padding: 8vh 6vw calc(56.25vw + 16px);
+    background-size: 100% auto;
     background-position: right bottom;
   }
   .hero-content { max-width: 100%; text-align: center; }
+  .hero h1 { font-size: clamp(2rem, 8vw, 3.2rem); }
+  .hero-subtitle { font-size: clamp(1.1rem, 4vw, 1.5rem); margin-bottom: 16px; }
+  .hero-text { font-size: clamp(0.95rem, 3.4vw, 1.15rem); margin-bottom: 24px; }
+  .hero-btn { padding: 14px 32px; font-size: 1.05rem; }
 }
 
+/* HP kecil */
 @media (max-width: 480px) {
+  .page { padding: 20px 12px; }
   .card { padding: 20px; }
-  .hero h1 { font-size: 2rem; }
+  .card h2 { font-size: 1.35rem; }
+  .field label { font-size: 0.95rem; }
   .score { font-size: 2.2rem; }
+  .label { font-size: 1.1rem; }
+  .badge { padding: 6px 20px; font-size: 1rem; }
+  .explain { text-align: left; hyphens: none; }
+  .actions { gap: 10px; }
+  .actions .btn { flex: 1; }
+}
+
+/* HP posisi landscape (layar pendek): kecilkan teks hero */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { padding: 16px 6vw; }
+  .hero-content { max-width: 50vw; }
+  .hero h1 { font-size: 1.8rem; margin-bottom: 6px; }
+  .hero-subtitle { font-size: 1rem; margin-bottom: 10px; }
+  .hero-text { font-size: 0.85rem; margin-bottom: 14px; line-height: 1.5; }
+  .hero-btn { padding: 10px 24px; font-size: 0.95rem; }
+}
+
+@media (min-width: 769px) and (orientation: landscape) {
+  .hero h1 {
+    white-space: nowrap;
+    font-size: clamp(2.5rem, 4.6vw, 5rem);
+  }
+  .hero-subtitle { font-size: clamp(1.25rem, 2.2vw, 2rem); }
+  .hero-text { font-size: clamp(1rem, 1.5vw, 1.4rem); }
+  .hero-btn { padding: 18px 44px; font-size: 1.2rem; }
 }

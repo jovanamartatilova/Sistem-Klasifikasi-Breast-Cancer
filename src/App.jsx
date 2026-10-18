@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Home from "./pages/Home";
-import InputPage from "./pages/InputPage";
+import InputPage from "./pages/Inputpage";
 import ResultPage from "./pages/Resultpage";
 import { classify } from "./utils/Mamdani";
 import "./App.css";
