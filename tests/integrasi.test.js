@@ -102,3 +102,22 @@ test("Input yang sama menghasilkan output yang sama", () => {
 
     assert.deepEqual(classify(input), classify(input));
 });
+
+test("Input tanpa aturan aktif ditangani dengan jelas", () => {
+    const input = {
+        clump_thickness: 1,
+        uniformity_cell_size: 1,
+        uniformity_cell_shape: 1,
+        marginal_adhesion: 1,
+        single_epi_cell_size: 1,
+        bare_nuclei: 10,
+        bland_chromatin: 10,
+        normal_nucleoli: 1,
+        mitosis: 1,
+    };
+
+    assert.throws(
+        () => classify(input),
+        /Tidak ada aturan fuzzy yang aktif/
+    );
+});
