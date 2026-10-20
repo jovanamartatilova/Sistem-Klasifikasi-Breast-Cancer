@@ -1,4 +1,3 @@
-import { FIELDS } from "./Inputpage";
 import bg from "../assets/Background 2.jpg";
 
 const EXPLANATION = {
